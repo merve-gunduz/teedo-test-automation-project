@@ -1,0 +1,98 @@
+appId: com.pozitron.hepsiburada
+---
+- launchApp
+- waitForAnimationToEnd
+
+# 1) Arama alanına git
+- assertVisible: "Ara"
+- tapOn: "Ara"
+- inputText: "Adidas ayakkabı"
+- pressKey: Enter
+- waitForAnimationToEnd
+
+# 2) Listeleme doğrulama (ör: 'Adidas' içeren bir sonuç başlığı)
+- assertVisible:
+    text: "Adidas"
+    optional: true
+
+# 3) Filtreler
+- tapOn:
+    text: "Filtrele"
+    optional: true
+- waitForAnimationToEnd
+
+# Cinsiyet: Erkek
+- tapOn:
+    text: "Cinsiyet"
+    optional: true
+- tapOn:
+    text: "Erkek"
+    optional: true
+
+# Renk: Beyaz
+- tapOn:
+    text: "Renk"
+    optional: true
+- tapOn:
+    text: "Beyaz"
+    optional: true
+
+# Numara: 42
+- tapOn:
+    text: "Numara"
+    optional: true
+- tapOn:
+    text: "42"
+    optional: true
+
+# Fiyat: 3.000 - 5.000
+- tapOn:
+    text: "Fiyat Aralığı"
+    optional: true
+- tapOn:
+    id: "minPrice"
+    optional: true
+- inputText: "3000"
+- tapOn:
+    id: "maxPrice"
+    optional: true
+- inputText: "5000"
+- pressKey: Enter
+- tapOn:
+    text: "Uygula"
+    optional: true
+- waitForAnimationToEnd
+
+# Filtreleri uygula / sonuçlara dön
+- tapOn:
+    text: "Sonuçları Gör"
+    optional: true
+- waitForAnimationToEnd
+
+# 4) İlk ürünü seç
+- tapOn:
+    point: "50%,25%"   # liste içinden bir ürün alanı (gerekirse ayarlanır)
+- waitForAnimationToEnd
+
+# 5) Sepete ekle
+- assertVisible:
+    text: "Sepete Ekle"
+    optional: true
+- tapOn:
+    text: "Sepete Ekle"
+    optional: true
+- waitForAnimationToEnd
+
+# 6) Login olmadan sepet
+- tapOn:
+    text: "Sepete Git"
+    optional: true
+- waitForAnimationToEnd
+
+# 7) Sepette doğrulamalar
+- assertVisible:
+    text: "Sepetim"
+    optional: true
+- assertVisible:
+    text: "Adidas"
+    optional: true
